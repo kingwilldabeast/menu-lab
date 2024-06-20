@@ -37,6 +37,8 @@ export default function RecipeList (props) {
           <h3>{recipe.idMeal}</h3>
           <h3>{recipe.strMeal}</h3>
           <h3>{recipe.strCategory}</h3>
+          <h3>{recipe.strArea}</h3>
+          <img src={recipe.strMealThumb} width={100}></img>
         </div>
       ))}
     </div>
