@@ -9,6 +9,7 @@ export default function App() {
   // const [input, setInput] = useState("")
   const [inputInProgress, setInputInProgress] = useState({ searchBar: '' });
   const [recipeArray, setRecipeArray] = useState([])
+  const [ids, setIds] = useState([])
 
   const updateTyping = (e) => {
     setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });
@@ -23,6 +24,7 @@ export default function App() {
     getData(searchTerm)
     
   }
+
   const getData = async (searchTerm) => {
     const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
     console.log(`recipes are ${response.data.meals}`)
@@ -33,7 +35,10 @@ export default function App() {
   }
 
   const handleDropdown = async (e) => {
-    const response = await axios.get(`www.themealdb.com/api/json/v1/1/filter.php?c=`)
+    e.preventDefault()
+    const selected = e.target.elements.categories.value
+    console.log(`www.themealdb.com/api/json/v1/1/search.php?c=${selected}`)
+    getData(selected)
   }
 
 
@@ -67,6 +72,7 @@ export default function App() {
               handleSubmit = {handleSubmit}
               updateTyping = {updateTyping}
               inputInProgress = {inputInProgress}
+              handleDropdown = {handleDropdown}
               />}/>
 
               <Route path ='/:RecipeId' element ={<ExpandedRecipeItem recipeArray = {recipeArray}/>}/>

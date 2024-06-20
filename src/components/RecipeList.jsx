@@ -6,26 +6,10 @@ import axios from 'axios'
 
 export default function RecipeList (props) {
 
-  const [categoryList, setCategoryList] = useState([])
-
   let navigate = useNavigate()
   const linkToExpandedItem = (item) => {
     navigate(`${item.idMeal}`)
   }
-
-  const getCategories = async () => {
-    try {
-      const response = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
-      const categories = response.data.categories.map(category => category.strCategory)
-      setCategoryList(categories)
-    } catch (error) {
-      console.error('Error fetching categories:', error)
-    }
-  }
-
-  useEffect(() => {
-    getCategories()
-  }, [])
 
   // console.log(`Array on list page is ${props.recipeArray}`)
 
@@ -45,11 +29,11 @@ export default function RecipeList (props) {
 
       <form onSubmit={props.handleDropdown}>
         <select name="categories" id="categories">
-          {
-            categoryList.map((category, index) =>(
-              <option key={index}>{category}</option>
-            ))
-          }
+          <option>Beef</option>
+          <option>Chicken</option>
+          <option>Lamb</option>
+          <option>Pasta</option>
+          <option>Pork</option>
         </select>
         <button>Search</button>
       </form>
