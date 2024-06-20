@@ -30,10 +30,7 @@ export default function RecipeList (props) {
   // console.log(`Array on list page is ${props.recipeArray}`)
 
   return (
-    <div className="container">
-
-      {/* <p>{`Recipes involving ${props.input}`}</p> */}
-
+    <div className="">
       <form onSubmit={props.handleSubmit}>
         <input
           name="searchBar"
@@ -57,8 +54,14 @@ export default function RecipeList (props) {
         <button>Search</button>
       </form>
 
+    <div className="container">
+
+      {/* <p>{`Recipes involving ${props.input}`}</p> */}
+
+
       {
       props.recipeArray.map((recipe) => (
+        
         <div className="list-item" 
         onClick={() => linkToExpandedItem(recipe)} 
         key={recipe.idMeal}
@@ -69,6 +72,7 @@ export default function RecipeList (props) {
           <img className="image" src={recipe.strMealThumb} width={100}></img>
         </div>
       ))}
+    </div>
     </div>
     
   )
