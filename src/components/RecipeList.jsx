@@ -14,8 +14,13 @@ export default function RecipeList (props) {
   }
 
   const getCategories = async () => {
-    const response = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
-    response.data.categories.forEach(category => {setCategoryList((prevCategoryList) => [...prevCategoryList, category.strCategory])})
+    try {
+      const response = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
+      const categories = response.data.categories.map(category => category.strCategory)
+      setCategoryList(categories)
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+    }
   }
 
   useEffect(() => {
@@ -44,8 +49,8 @@ export default function RecipeList (props) {
       <form onSubmit={props.handleDropdown}>
         <select name="categories" id="categories">
           {
-            categoryList.map((category) =>(
-              <option>{category}</option>
+            categoryList.map((category, index) =>(
+              <option key={index}>{category}</option>
             ))
           }
         </select>
