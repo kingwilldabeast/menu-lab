@@ -32,6 +32,10 @@ export default function App() {
 
   }
 
+  const handleDropdown = async (e) => {
+    const response = await axios.get(`www.themealdb.com/api/json/v1/1/filter.php?c=`)
+  }
+
 
     // console.log(`current text is ${inputInProgress.searchBar}`)
     // console.log(`searched item is ${input}`)
