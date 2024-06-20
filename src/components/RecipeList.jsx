@@ -54,6 +54,7 @@ export default function RecipeList (props) {
             ))
           }
         </select>
+        <button>Search</button>
       </form>
 
       {
