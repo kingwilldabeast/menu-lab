@@ -9,6 +9,7 @@ export default function App() {
   // const [input, setInput] = useState("")
   const [inputInProgress, setInputInProgress] = useState({ searchBar: '' });
   const [recipeArray, setRecipeArray] = useState([])
+  const [ids, setIds] = useState([])
 
   const updateTyping = (e) => {
     setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });
@@ -33,13 +34,35 @@ export default function App() {
 
   }
 
+  const convertToMeal = async (meals) => {
+    const mealDetails = []
+
+    for(const meal of meals) {
+      try {
+        const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+        console.log(res.data)
+        mealDetails.push(res.data)
+      } catch (error) {
+        console.error(`Error fetching data from id ${meal.idMeal}: `, error)
+      }
+    }
+
+    return mealDetails
+  }
+
   const handleDropdown = async (e) => {
     e.preventDefault()
     const selected = e.target.elements.categories.value
     console.log(`www.themealdb.com/api/json/v1/1/filter.php?c=${selected}`)
-    const response = await axios.get(`www.themealdb.com/api/json/v1/1/filter.php?c=${selected}`)
+    
+    try {
+      const response = await axios.get(`www.themealdb.com/api/json/v1/1/filter.php?c=${selected}`)
+      const mealDetails = await convertToMeal(response.data.meals)
+      setRecipeArray(mealDetails)
+    } catch (error) {
+      console.error('error fetching meals', error)
+    }
 
-    setRecipeArray(response.data.meals)
   }
 
 
