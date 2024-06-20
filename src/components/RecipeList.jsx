@@ -12,7 +12,7 @@ export default function RecipeList (props) {
   // console.log(`Array on list page is ${props.recipeArray}`)
 
   return (
-    <div className="">
+    <div className="container">
 
       {/* <p>{`Recipes involving ${props.input}`}</p> */}
 
@@ -30,10 +30,9 @@ export default function RecipeList (props) {
 
       {
       props.recipeArray.map((recipe) => (
-        <div className="" 
+        <div className="list-item" 
         onClick={() => linkToExpandedItem(recipe)} 
         key={recipe.idMeal}
-        style = {{border: "1px solid black"}}
         >
           <h3>{recipe.idMeal}</h3>
           <h3>{recipe.strMeal}</h3>

@@ -16,10 +16,11 @@ export default function ExpandedRecipeItem (props) {
   }, [props.recipeArray, RecipeId])
 
   return currentRecipe ? (
-    <div className="">
+    <div className="expanded-container">
       <Link to ='/'>Back to Search Results</Link>
       
-      <div className="">
+      <div className="expanded-list-item">
+        {/* Alfred, include the photo */}
         <h3>{currentRecipe.idMeal}</h3>
           <h3>{currentRecipe.strMeal}</h3>
           <h3>{currentRecipe.strCategory}</h3>
