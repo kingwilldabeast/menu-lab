@@ -49,6 +49,17 @@ body {
   border-radius: 10px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  width: 200px;
+  background-color: rgb(193, 242, 242, 0.9);
+  border-radius: 0.5rem;
+  border: 2px double black;
+}
+
 .list-item, .expanded-list-item {
   display: flex;
   flex-direction: column;
@@ -60,7 +71,7 @@ body {
   margin: 10px;
   border-radius: 0.5rem;
   border: 2px double black;
-  background-color: #c1f2f2;
+  background-color: rgb(193, 242, 242, 0.9);
   color: rgb(64, 127, 200);
   font-family: Kugile;
   font-size: 20px;
