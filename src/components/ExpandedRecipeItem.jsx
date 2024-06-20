@@ -36,8 +36,8 @@ const renderInstructions = (instructions) => {
     const steps = instructions.split('\n')
     return (
       <div>
-        <h4>Instructions</h4>
-        <ol>
+        <h3>Instructions</h3>
+        <ol style={{ textAlign: 'left' }}>
           {steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
@@ -54,15 +54,14 @@ return currentRecipe ? (
   <div className="expanded-container">
     <Link to='/'>Back to Search Results</Link>
     <div className="expanded-list-item">
+      <h3>{currentRecipe.strMeal}</h3>
       {currentRecipe.strMealThumb && (
-        <img src={currentRecipe.strMealThumb} alt={currentRecipe.strMeal} />
+        <img className="expanded-image" src={currentRecipe.strMealThumb} width={300} alt={currentRecipe.strMeal} />
       )}
   
-      <h3>{currentRecipe.strMeal}</h3>
-      <h4>{currentRecipe.strCategory}</h4>
 
-      <h4>Ingredients</h4>
-      <ul>
+      <h3>Ingredients</h3>
+      <ul style={{ listStyleType: 'none' }}>
         {ingredients.map((item, index) => (
           <li key={index}>
             {item.ingredient} - {item.measure}
