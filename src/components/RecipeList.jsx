@@ -63,10 +63,9 @@ export default function RecipeList (props) {
         onClick={() => linkToExpandedItem(recipe)} 
         key={recipe.idMeal}
         >
-          <h3>{recipe.idMeal}</h3>
           <h3>{recipe.strMeal}</h3>
-          <h3>{recipe.strCategory}</h3>
-          <h3>{recipe.strArea}</h3>
+          <h4>{recipe.strCategory}</h4>
+          <h4>{recipe.strArea}</h4>
           <img className="image" src={recipe.strMealThumb} width={100}></img>
         </div>
       ))}
